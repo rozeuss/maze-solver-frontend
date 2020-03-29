@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Solved mazes</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let maze of mazes">
+        <h3 mat-line><b>Number of corners:</b> {{maze.solution.numberOfCorners}}</h3>
+        <h3 mat-line *ngFor="let rows of maze.matrix">
+          {{rows}}
+        </h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

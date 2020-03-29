@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Upload maze</mat-card-title>
+  <mat-card-content>
+    <div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input type="file" accept="text/plain" name="maze" (change)="onFileChange($event)"/>
+        <button mat-raised-button color="primary" type="submit">Upload</button>
+      </form>
+
+      <ng-container *ngIf="show">
+        <ng-container *ngIf="errorMessage; then errorTemplate else successTemplate"></ng-container>
+        <ng-template #errorTemplate>
+          <div style="color:red">
+            <h1>Error has occurred</h1>
+            {{errorMessage | json}}
+          </div>
+        </ng-template>
+        <ng-template #successTemplate>
+          <div style="color:green">
+            <h1>Success</h1>
+            Answer: {{uploadResponse?.numberOfCorners}}
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+  </mat-card-content>
+</mat-card>
